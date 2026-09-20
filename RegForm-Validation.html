@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 55%;
+            height: 750px;
+            background: linear-gradient(104deg, rgba(0, 0, 255, 0.541), rgb(0, 174, 255));
+            border: none;
+            margin-left: 350px;
+        }
+
+        h1 {
+            margin-left: 40px;
+        }
+
+        .form {
+            width: 550px;
+            height: 670px;
+            background-color: white;
+            border-radius: 6px;
+            position: relative;
+            left: 160px;
+            top: 60px;
+        }
+
+        label {
+            font-size: 20px;
+            margin-left: 40px;
+        }
+
+        input {
+            width: 320px;
+            height: 45px;
+            border-radius: 5px;
+            margin-left: 40px;
+        }
+
+        button {
+            width: 320px;
+            height: 45px;
+            background: linear-gradient(104deg, rgba(0, 0, 255, 0.541), rgb(0, 174, 255));
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            margin-left: 40px;
+            border-radius: 5px;
+        }
+
+        .error {
+            position: relative;
+            bottom: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form class="form"><br>
+            <h1>CREATE ACCOUNT</h1><br><br>
+            <label for="">Username</label><br>
+            <input type="text" class="Check"><br>
+            <p class="error"></p>
+            <label for="">Email</label><br>
+            <input type="email" class="Check" required><br>
+            <p class="error"></p>
+            <label for="">Password</label><br>
+            <input type="password" class="Check"> <br>
+            <p class="error"></p>
+            <label for=""> Confirm Password</label><br>
+            <input type="password" class="Check"><br>
+            <p class="error"></p>
+            <button onclick=" return acc()">Sumbit</button>
+        </form>
+    </div>
+    <script>
+        function acc() {
+            var a = document.getElementsByClassName("Check")
+            var b = document.getElementsByClassName("error")
+            var s = true
+            for (i = 0; i < a.length; i++) {
+                if (a[i].value != "") {
+                    b[i].innerHTML = ""
+                    b[i].style.color = "Green"
+                    s = false
+                }
+                else {
+                    b[i].innerHTML = "This field can't be empty"
+                    b[i].style.color = "red"
+                }
+                if (a[1] != "email") {
+                        b[1].innerHTML = "Please include an '@' in the email address"
+                        b[1].style.color = "red"
+                    }
+                }
+            return s;
+        }
+    </script>
+</body>
+
+</html>

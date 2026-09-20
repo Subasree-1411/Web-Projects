@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 90%;
+            height: 500px;
+            /* background-color: bisque; */
+            filter: blur(50%);
+            display: flex;
+            justify-content: center;
+            padding: 50px 70px;
+        }
+
+        .block {
+            width: 450px;
+            height: 390px;
+            border-radius: 7px;
+            box-shadow: 2px 2px 15px black;
+            background-color: rgb(72, 67, 67);
+            filter: blur(80%);
+            position: relative;
+            top: 25px;
+        }
+
+        h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            font-size: 25px;
+            letter-spacing: 5px;
+            position: relative;
+            top: 20px;
+            left: 87px;
+            line-height: 37px;
+        }
+        h3{
+            width:340px;
+            height: 45px;
+            background-color: rgb(236, 196, 73);
+            border-radius: 10px;
+            border: 2px solid white;
+            position: relative;
+            bottom:17px;
+            left:60px;
+            text-align: center;
+            color: #095abc;
+            font-size: 25px;
+            letter-spacing: 2px;
+            padding-top: 10px;
+        }
+
+        p {
+            width: 300px;
+            height: 45px;
+            background-color: #808080c8;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+            padding: 8px 0px 0px 30px;
+            margin-left: 60px;
+        }
+
+        button {
+            width: 200px;
+            height: 45px;
+            border: 2px solid white;
+            background-color: transparent;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            letter-spacing: 2px;
+            position: relative;
+            left: 120px;
+            bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="block">
+            <h2>Find Most Frequent Character</h2><br>
+            <p>T4TEQ SoftwaRe soluTion</p><br><br>
+            <button type="button" onclick="frequent()">Click to Find..</button>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script>
+        function frequent() {
+    let str = document.getElementsByTagName("p")[0].innerText;
+
+    let freq = {};
+    let maxChar = "";
+    let maxCount = 0;
+
+    for (let ch of str) {
+        freq[ch] = (freq[ch] || 0) + 1;
+
+        if (freq[ch] > maxCount) {
+            maxCount = freq[ch];
+            maxChar = ch;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        `<h3>
+         ${maxChar} (Appears ${maxCount} times)
+        </h3>`;
+}
+
+    </script>
+
+</body>
+
+</html>

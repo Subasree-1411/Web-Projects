@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 320px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #357ab8;
+  }
+  .link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+  }
+  .link a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+  #message {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 10px;
+    min-height: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Login</h2>
+  <div id="message"></div>
+  <form id="loginForm">
+    <label for="username">Username</label>
+    <input type="text" id="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" required>
+
+    <button type="submit">Login</button>
+  </form>
+  <div class="link">
+    Don't have an account? <a href="signup.html">Sign up here</a>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  const messageDiv = document.getElementById('message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+
+    if (!storedUsername || !storedPassword) {
+      messageDiv.style.color = 'red';
+      messageDiv.textContent = 'No account found. Please sign up first.';
+      return;
+    }
+
+    if (username === storedUsername && password === storedPassword) {
+      alert('Login Successfully');
+      // You can redirect to a dashboard/home page here if you like
+      // window.location.href = 'dashboard.html';
+    } else {
+      messageDiv.style.color = 'red';
+      messageDiv.textContent = 'Invalid username or password.';
+    }
+  });
+</script>
+
+</body>
+</html>
